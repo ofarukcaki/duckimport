@@ -1,0 +1,7 @@
+{
+  "name": "duckimport",
+  "version": "1.0.0",
+  "description": "Elasticsearch Data Import Tool",
+  "main": "index.js",
+  "license": "MIT"
+}

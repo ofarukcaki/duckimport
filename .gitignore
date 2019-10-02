@@ -89,3 +89,7 @@ typings/
 
 # Any txt files o local development environment
 *.txt
+*.exe
+config.json
+index-linux
+index-macos

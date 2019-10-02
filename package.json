@@ -1,9 +1,16 @@
 {
   "name": "duckimport",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Elasticsearch Data Import Tool",
+  "author": {
+    "name": "Faruk Caki",
+    "email": "contact@ofarukcaki.com"
+  },
   "main": "index.js",
-  "bin": "index.js",
+  "bin": {
+    "duckimport": "index.js"
+  },
+  "preferGlobal": true,
   "license": "MIT",
   "dependencies": {
     "@elastic/elasticsearch": "^7.3.0",

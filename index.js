@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const nexline = require("nexline");
 const fs = require("fs");
 const countdown = require("countdown");
@@ -164,7 +166,12 @@ async function pushElastic(dataset) {
     const { body: bulkResponse } = await client.bulk({ refresh: true, body });
     errors = bulkResponse.errors;
   } catch (error) {
-    console.log("-"); // undefined error?
+    console.log(
+      colors.red(
+        "There is a problem with Elasticsearch connection, make sure your elesticsearch server is running and your credentials are correct."
+      )
+    ); // undefined error?
+    process.exit(2);
   }
 
   isFirstTime = false;

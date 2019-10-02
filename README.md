@@ -11,7 +11,7 @@
 ## Install
 Install [Nodejs](https://nodejs.org) if you haven't already.    
 
-Then the package globally:  
+Then install the package globally:  
  `npm i -g duckimport`  
 or  
 `yarn global add duckimport`      

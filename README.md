@@ -104,4 +104,9 @@ An example config file:
 - ### `index`
     - **Type:** *Object*
     - Index configuration. [Reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#_indices_create)
-    - **index** field is represents your Index name and it's mandatory. You don't need to include a body field or so if you set **createNewIndex: false**
+    - **index** field is represents your Index name and it's mandatory. You don't need to include a body field or so if you set **createNewIndex: false**      
+
+
+
+---  
+<sup>Duck icon made by [Freepik](https://www.freepik.com/home) from [http://www.flaticon.com/](www.flaticon.com)</sup>

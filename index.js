@@ -17,6 +17,7 @@ let file, seperator, columns, lines, createNewIndex, index, connection;
 checkMessage();
 
 program
+  .name("duckimport")
   .option("-c, --config <path>", "config file path")
   .option("-i, --inline <configString>", "base64 encoded config object");
 

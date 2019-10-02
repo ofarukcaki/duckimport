@@ -9,8 +9,9 @@
 - Ability to provide a command-line encoded config. No need to create a local config file
 
 ## Install
+Install [Nodejs](https://nodejs.org) if you haven't already.    
 
-Install the package globally:  
+Then the package globally:  
  `npm i -g duckimport`  
 or  
 `yarn global add duckimport`      

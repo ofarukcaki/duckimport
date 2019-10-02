@@ -143,7 +143,7 @@ async function main() {
       }
       dataset = [];
       // If all data is read, returns null
-      console.log('> Completed');
+      console.log("> Completed");
       break;
     }
   }

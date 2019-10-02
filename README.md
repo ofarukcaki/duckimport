@@ -14,6 +14,10 @@ Install the package globally:
  `npm i -g duckimport`  
 or  
 `yarn global add duckimport`      
+
+## Demo
+![Gif](https://raw.githubusercontent.com/ofarukcaki/duckimport/master/assets/demo.gif)
+
 ## Usage
 
 `duckimport <command>`  

@@ -1,7 +1,6 @@
 ![duckimport](https://raw.githubusercontent.com/ofarukcaki/duckimport/master/assets/logo-text.png?token=AFZ3AYHQOYIIK3NASHVVVEK5TXQSY)
 
-# Elasticsearch cli Data Importer
-
+# Elasticsearch cli Data Importer 
 ## Features
 - Can Index(import) very **large** files.
 - Runs on any platform (Windows, Mac, Linux)
@@ -106,6 +105,14 @@ An example config file:
     - Index configuration. [Reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#_indices_create)
     - **index** field is represents your Index name and it's mandatory. You don't need to include a body field or so if you set **createNewIndex: false**      
 
+
+## F.A.Q
+### How does it work?
+**duckimport** process your files in any size line by line and send them into Elasticsearch as chunks. Thanks to [nexline](https://github.com/sharpart555/nexline)
+### What is `lps` mean?
+**L**ines **P**er **S**econds. Represents how many lines of your file is processing in a second,
+### How can I use without a config file?
+You can use inline base64 encoded config string using `-i` flag. All you need is prepare your config object(json or js object and encode it using base64. duckimport will decode the encoded string and process it.
 
 
 ---  

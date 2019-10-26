@@ -154,6 +154,10 @@ async function main() {
   fs.closeSync(fd);
 }
 
+function flatMap(callback, array) {
+  return array.reduce((acc, curr) => acc.concat(callback(curr)), [])
+}
+
 let isFirstTime = true;
 async function pushElastic(dataset) {
   if (isFirstTime && createNewIndex) {
@@ -161,7 +165,7 @@ async function pushElastic(dataset) {
     await client.indices.create(index, { ignore: [400] });
   }
   const _index = index.index;
-  const body = dataset.flatMap(doc => [{ index: { _index } }, doc]);
+  const body = flatMap(doc => [{ index: { _index } }, doc], dataset);
   let errors = null;
   try {
     const { body: bulkResponse } = await client.bulk({ refresh: true, body });

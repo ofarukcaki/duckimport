@@ -12,6 +12,9 @@
   "bin": {
     "duckimport": "index.js"
   },
+  "engines": {
+    "node": ">=8.9.0"
+  },
   "preferGlobal": true,
   "license": "MIT",
   "dependencies": {

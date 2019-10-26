@@ -9,6 +9,7 @@
 
 ## Install
 Install [Nodejs](https://nodejs.org) if you haven't already.    
+**Node.js version 11.10** or higher is required. 
 
 Then install the package globally:  
  `npm i -g duckimport`  

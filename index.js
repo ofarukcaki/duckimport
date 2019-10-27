@@ -12,7 +12,7 @@ const shell = require("shelljs");
 const program = require("commander");
 const axios = require("axios");
 
-let file, seperator, columns, lines, createNewIndex, index, connection;
+let file, separator, columns, lines, createNewIndex, index, connection;
 
 checkMessage();
 
@@ -43,7 +43,7 @@ if (!program.config && !program.inline) {
 } else if (program.config) {
   var _config = JSON.parse(fs.readFileSync(program.config));
   (file = _config.file),
-    (seperator = _config.seperator),
+    (separator = _config.separator ? _config.separator : _config.seperator),
     (columns = _config.columns),
     (lines = _config.lines),
     (createNewIndex = _config.createNewIndex),
@@ -52,7 +52,7 @@ if (!program.config && !program.inline) {
 } else if (program.inline) {
   var _config = JSON.parse(Buffer.from(program.inline, "base64").toString());
   (file = _config.file),
-    (seperator = _config.seperator),
+    (separator = _config.separator ? _config.separator : _config.seperator),
     (columns = _config.columns),
     (lines = _config.lines),
     (createNewIndex = _config.createNewIndex),
@@ -66,7 +66,7 @@ let s = null;
 
 console.table({
   file: file,
-  seperator: seperator,
+  separator: separator,
   columns: columns.join(),
   "target index": index.index
 });
@@ -113,7 +113,7 @@ async function main() {
     lc++;
     let obj = {};
     try {
-      let splitted = line.split(seperator);
+      let splitted = line.split(separator);
       for (let i = 0; i < columns.length; i++) {
         obj[columns[i]] = splitted[i];
       }

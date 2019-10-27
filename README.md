@@ -48,7 +48,7 @@ An example config file:
         "node": "http://localhost:9200"
     },
     "file": "bigFile.csv",
-    "seperator": ",",
+    "separator": ",",
     "columns": [
         "firstname",
         "lastname"
@@ -89,9 +89,9 @@ An example config file:
 - ### `file`
     - **Type:** *String*
     - The file you want to import(aka. indexing) into Elasticsearch. Can be .txt .csv .tsv etc.
-- ### `seperator`
+- ### `separator`
     - **Type:** *String*
-    - The seperator between your data's columns
+    - The separator between your data's columns
     - Exp: ";",  ":",  "," etc.
 - ### `columns`
     - **Type:** *Array*

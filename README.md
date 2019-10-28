@@ -1,6 +1,7 @@
 ![duckimport](https://raw.githubusercontent.com/ofarukcaki/duckimport/master/assets/logo-text.png?token=AFZ3AYHQOYIIK3NASHVVVEK5TXQSY)
 
 # Elasticsearch cli Data Importer 
+see [faq](#faq)
 ## Features
 - Can Index(import) very **large** files.
 - Runs on any platform (Windows, Mac, Linux)

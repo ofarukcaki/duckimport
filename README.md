@@ -117,5 +117,7 @@ An example config file:
 You can use inline base64 encoded config string using `-i` flag. All you need is prepare your config object(json or js object and encode it using base64. duckimport will decode the encoded string and process it.
 
 
+## Milestones
+- [ ] duckimport GUI - 100+ Github stars 
 ---  
 <sup>Duck icon made by [Freepik](https://www.freepik.com/home) from [http://www.flaticon.com/](www.flaticon.com)</sup>

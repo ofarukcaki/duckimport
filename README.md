@@ -1,3 +1,9 @@
+[![npm](https://img.shields.io/npm/v/duckimport.svg)](https://www.npmjs.com/package/duckimport)
+[![npm](https://img.shields.io/node/v/duckimport.svg)](https://www.npmjs.com/package/duckimport)
+[![npm](https://img.shields.io/npm/dt/duckimport.svg)](https://www.npmjs.com/package/duckimport)
+[![GitHub license](https://img.shields.io/github/license/ofarukcaki/duckimport.svg)](https://github.com/ofarukcaki/duckimport/blob/master/LICENSE)
+
+
 ![duckimport](https://raw.githubusercontent.com/ofarukcaki/duckimport/master/assets/logo-text.png?token=AFZ3AYHQOYIIK3NASHVVVEK5TXQSY)
 
 # Elasticsearch cli Data Importer 

@@ -1,34 +1,30 @@
-#!/usr/bin/env node
-
-const nexline = require("nexline");
-const fs = require("fs");
-const countdown = require("countdown");
-const { Client } = require("@elastic/elasticsearch");
-const ora = require("ora");
-const ProgressBar = require("progress");
-const colors = require("colors");
-const spinner_1 = ora("Getting the length of the file");
-const shell = require("shelljs");
-const program = require("commander");
-const axios = require("axios");
+const nexline = require('nexline');
+const fs = require('fs');
+const countdown = require('countdown');
+const { Client } = require('@elastic/elasticsearch');
+const ora = require('ora');
+const ProgressBar = require('progress');
+const colors = require('colors');
+const spinner_1 = ora('Getting the length of the file');
+const shell = require('shelljs');
+const program = require('commander');
+const axios = require('axios');
 
 let file, separator, columns, lines, createNewIndex, index, connection;
 
-checkMessage();
-
 program
-  .name("duckimport")
-  .option("-c, --config <path>", "config file path")
-  .option("-i, --inline <configString>", "base64 encoded config object");
+  .name('duckimport')
+  .option('-c, --config <path>', 'config file path')
+  .option('-i, --inline <configString>', 'base64 encoded config object');
 
-program.on("--help", function() {
-  console.log("");
-  console.log("Examples:");
+program.on('--help', function () {
+  console.log('');
+  console.log('Examples:');
   console.log(`  $ ${program._name} -c ./config.json`);
   console.log(`  $ ${program._name} -i NDJjNGVx........GZzZGY=\n`);
   console.log(
     colors.blue(
-      "For questions and error reports please visit the github repository: https://github.com/ofarukcaki/duckimport"
+      'For questions and error reports please visit the github repository: https://github.com/ofarukcaki/duckimport'
     )
   );
 });
@@ -50,7 +46,7 @@ if (!program.config && !program.inline) {
     (index = _config.index),
     (connection = _config.client);
 } else if (program.inline) {
-  var _config = JSON.parse(Buffer.from(program.inline, "base64").toString());
+  var _config = JSON.parse(Buffer.from(program.inline, 'base64').toString());
   (file = _config.file),
     (separator = _config.separator ? _config.separator : _config.seperator),
     (columns = _config.columns),
@@ -68,7 +64,7 @@ console.table({
   file: file,
   separator: separator,
   columns: columns.join(),
-  "target index": index.index
+  'target index': index.index,
 });
 
 let bar = null;
@@ -78,12 +74,12 @@ if (isSmall) {
   const lc = getLength(file);
 
   bar = new ProgressBar(
-    `Importing ${colors.cyan("[:bar]")} :percent    :rate/lps    ${
-      "ETA:".bold
+    `Importing ${colors.cyan('[:bar]')} :percent    :rate/lps    ${
+      'ETA:'.bold
     } :etas`.yellow,
     {
       total: lc,
-      width: 50
+      width: 50,
     }
   );
 } else {
@@ -95,10 +91,10 @@ if (isSmall) {
 }
 
 async function main() {
-  const fd = fs.openSync(file, "r");
+  const fd = fs.openSync(file, 'r');
 
   const nl = nexline({
-    input: fd // input can be file, stream, string and buffer
+    input: fd, // input can be file, stream, string and buffer
   });
 
   let dataset = [];
@@ -106,7 +102,7 @@ async function main() {
   let lc = 0;
   let total = 0;
   s = new Date(Date.now());
-  console.log("> Started");
+  console.log('> Started');
   while (true) {
     let line = await nl.next();
     if (line) line = line.trim(); //Remove the '\n' from the end of the line
@@ -125,7 +121,7 @@ async function main() {
         bar.tick(dataset.length);
       }
       if (err) {
-        console.log("There is an error", err);
+        console.log('There is an error', err);
       } else if (!isSmall) {
         total += lines;
         console.log(`${lines} lines imported   Total: ${total}`);
@@ -136,7 +132,7 @@ async function main() {
       // push remainders
       let err = await pushElastic(dataset);
       if (err) {
-        console.log("There is an error");
+        console.log('There is an error');
       } else if (!isSmall) {
         total += lines;
         console.log(`${lines} lines imported   Total: ${total}`);
@@ -146,7 +142,7 @@ async function main() {
       }
       dataset = [];
       // If all data is read, returns null
-      console.log("> Completed");
+      console.log('> Completed');
       break;
     }
   }
@@ -161,7 +157,7 @@ async function pushElastic(dataset) {
     await client.indices.create(index, { ignore: [400] });
   }
   const _index = index.index;
-  const body = dataset.flatMap(doc => [{ index: { _index } }, doc]);
+  const body = dataset.flatMap((doc) => [{ index: { _index } }, doc]);
   let errors = null;
   try {
     const { body: bulkResponse } = await client.bulk({ refresh: true, body });
@@ -169,7 +165,7 @@ async function pushElastic(dataset) {
   } catch (error) {
     console.log(
       colors.red(
-        "There is a problem with Elasticsearch connection, make sure your elesticsearch server is running and your credentials are correct."
+        'There is a problem with Elasticsearch connection, make sure your elesticsearch server is running and your credentials are correct.'
       )
     ); // undefined error?
     process.exit(2);
@@ -194,29 +190,14 @@ function getLength(file) {
   const out = shell.exec(`wc -l ${file}`, { silent: true }).stdout.trim();
   const regex = /(\d*)\s.*/;
   const lc = parseInt(regex.exec(out)[1]);
-  spinner_1.stopAndPersist({ symbol: ">", text: `${lc} lines detected.` });
+  spinner_1.stopAndPersist({ symbol: '>', text: `${lc} lines detected.` });
   return lc;
 }
 
-function checkMessage() {
-  axios({
-    url:
-      "https://raw.githubusercontent.com/ofarukcaki/duckimport/master/notification.md",
-    timeout: "1000",
-    method: "get"
-  })
-    .then(res => {
-      if (res.status === 200) {
-        console.log(colors.blue(res.data));
-      }
-    })
-    .catch(err => {});
-}
-
-process.on("beforeExit", code => {
+process.on('beforeExit', (code) => {
   console.log(
     colors.yellow(
-      "\nTime took: ".bold +
+      '\nTime took: '.bold +
         countdown(s, null, countdown.ALL, NaN, 0).toString()
     )
   );

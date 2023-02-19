@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const nexline = require('nexline');
 const fs = require('fs');
 const countdown = require('countdown');

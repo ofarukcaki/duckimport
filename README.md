@@ -4,7 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/ofarukcaki/duckimport.svg)](https://github.com/ofarukcaki/duckimport/blob/master/LICENSE)
 
 
-![duckimport](https://raw.githubusercontent.com/ofarukcaki/duckimport/master/assets/logo-text.png?token=AFZ3AYHQOYIIK3NASHVVVEK5TXQSY)
+![duckimport](https://raw.githubusercontent.com/ofarukcaki/duckimport/master/assets/logo-text.png)
 
 # Elasticsearch cli Data Importer 
 see [faq](#faq)
